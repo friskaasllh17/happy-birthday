@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎂 Happy Birthday! 🎂</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #FF69B4, #FF1493, #C71585);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 40px;
+            max-width: 700px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            position: relative;
+        }
+
+        .title {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #FF1493;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .cake-button {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            border: none;
+            border-radius: 20px;
+            padding: 30px 50px;
+            font-size: 2em;
+            font-weight: bold;
+            color: #FF1493;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5);
+            transition: all 0.3s;
+            margin-bottom: 30px;
+        }
+
+        .cake-button:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.7);
+        }
+
+        .cake-button:active {
+            transform: scale(0.95);
+        }
+
+        .message-box {
+            background: linear-gradient(135deg, #FFB6C1, #FFE4E1);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #8B008B;
+            border: 3px solid #FF69B4;
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .button-grid {
+            display: none;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .fun-button {
+            border: none;
+            border-radius: 15px;
+            padding: 20px 15px;
+            font-size: 1em;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .fun-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .fun-button:active {
+            transform: translateY(0);
+        }
+
+        .btn-1 { background: linear-gradient(135deg, #FF6B9D, #FF1493); }
+        .btn-2 { background: linear-gradient(135deg, #FFA500, #FF8C00); }
+        .btn-3 { background: linear-gradient(135deg, #32CD32, #228B22); }
+        .btn-4 { background: linear-gradient(135deg, #4169E1, #1E90FF); }
+        .btn-5 { background: linear-gradient(135deg, #9370DB, #8A2BE2); }
+        .btn-6 { background: linear-gradient(135deg, #FF1493, #C71585); }
+
+        .counter {
+            display: none;
+            margin-top: 20px;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #FF1493;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #FFD700;
+            position: absolute;
+            animation: fall 3s linear;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .music-controls {
+            display: none;
+            margin: 20px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #FF1493, #C71585);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .music-controls button {
+            background: white;
+            border: none;
+            border-radius: 10px;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #FF1493;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: all 0.3s;
+        }
+
+        .music-controls button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.5);
+        }
+
+        .now-playing {
+            color: white;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        @media (max-width: 600px) {
+            .button-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .title {
+                font-size: 1.8em;
+            }
+            .cake-button {
+                font-size: 1.5em;
+                padding: 20px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">🎉 HAPPY BIRTHDAY DESI CANTIK 🎉</h1>
+        
+        <button class="cake-button" id="cakeBtn" onclick="showBirthdayMessage()">
+            🎂<br>KLIK AKU!
+        </button>
+
+        <div class="message-box" id="messageBox"></div>
+
+        <audio id="audioPlayer" src="happybirthdaysong.mp3"></audio>
+        
+        <div class="music-controls" id="musicControls">
+            <div class="now-playing">🎵 Sedang Memutar: Happy Birthday to You 🎵</div>
+            <button onclick="toggleMusic()">⏸️ Pause</button>
+            <button onclick="restartMusic()">🔄 Ulang</button>
+        </div>
+
+        <div class="button-grid" id="buttonGrid">
+            <button class="fun-button btn-1" onclick="showMessage(1)">💖 Doa Baik</button>
+            <button class="fun-button btn-2" onclick="showMessage(2)">✨ Harapan</button>
+            <button class="fun-button btn-3" onclick="showMessage(3)">🎁 Hadiah</button>
+            <button class="fun-button btn-4" onclick="showMessage(4)">🎊 Terima Kasih</button>
+            <button class="fun-button btn-5" onclick="showMessage(5)">🌈 Bible Verse</button>
+            <button class="fun-button btn-6" onclick="playMusic()">🎵 Lagu</button>
+        </div>
+
+        <div class="counter" id="counter"></div>
+    </div>
+
+    <script>
+        const messages = [
+            "🎂 Selamat Ulang Tahun Adekku Tersayang! 🎂",
+            "💖 Semoga panjang umur dan sehat selalu! 💖",
+            "🌟 Semoga semua impianmu tercapai! 🌟",
+            "🎁 Sebutkan apa maumu... Kakak cantikmu akan mengabulkannya! 🎁",
+            "🎈 Terima kasih karena udah jadi anak terakhir soalnya kalo aku jadi anak terakhir keknya ga kuat! 🎈",
+            "✨ Apabila engkau memutuskan berbuat sesuatu, maka akan tercapai maksudmu, dan cahaya terang menyinari jalan-jalanmu! ✨"
+        ];
+
+        let clickCount = 0;
+        let isShown = false;
+        let musicPlaying = false;
+        const audio = document.getElementById('audioPlayer');
+
+        function showBirthdayMessage() {
+            if (!isShown) {
+                isShown = true;
+                document.getElementById('messageBox').textContent = messages[0];
+                document.getElementById('messageBox').style.display = 'block';
+                document.getElementById('buttonGrid').style.display = 'grid';
+                document.getElementById('counter').style.display = 'block';
+                document.getElementById('cakeBtn').innerHTML = '🎂<br>YAY!';
+                createConfetti();
+            } else {
+                createConfetti();
+            }
+        }
+
+        function showMessage(index) {
+            if (isShown) {
+                document.getElementById('messageBox').textContent = messages[index];
+                clickCount++;
+                document.getElementById('counter').textContent = `🎉 Kamu sudah klik ${clickCount} kali! 🎉`;
+                createConfetti();
+            }
+        }
+
+        function playMusic() {
+            const controls = document.getElementById('musicControls');
+            
+            if (!musicPlaying) {
+                audio.play();
+                controls.style.display = 'block';
+                musicPlaying = true;
+                
+                // Scroll to controls
+                controls.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            
+            createConfetti();
+        }
+
+        function toggleMusic() {
+            const btn = event.target;
+            if (audio.paused) {
+                audio.play();
+                btn.textContent = '⏸️ Pause';
+            } else {
+                audio.pause();
+                btn.textContent = '▶️ Play';
+            }
+        }
+
+        function restartMusic() {
+            audio.currentTime = 0;
+            audio.play();
+            createConfetti();
+        }
+
+        function createConfetti() {
+            const colors = ['#FFD700', '#FF69B4', '#00CED1', '#32CD32', '#FF6347', '#9370DB'];
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 0.5 + 's';
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => confetti.remove(), 3000);
+            }
+        }
+    </script>
+</body>
+</html>
